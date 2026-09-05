@@ -3,10 +3,12 @@ package circus.Animal;
 import circus.Asset;
 
 public abstract class Animal implements Asset {
-    // contract --> must provide
+    // contract --> anything that inherits must provide this behaviour
     public abstract String speak();
 
-    public int getValue(){
-        return 5;
-    }
+    // abstract method needs an abstract class!!!!!!!
+
+//    public int getValue(){
+//        return 5;
+//    }
 }

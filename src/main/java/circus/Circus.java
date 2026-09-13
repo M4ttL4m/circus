@@ -41,9 +41,57 @@ public class Circus {
     }
 
     public static void main(String[] args) {
-        makeAnimalsTalk();
-        System.out.println("Total value of animals " + calculateAssetValue(animals));
-        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+        System.out.println("Number of animals in the circus: " + animals.length);
+
+        //printAllAnimals();
+
+        // throws error --> need arraylist
+       // animals[3] = new Elephant(name:"StrongOne")
+
+       // System.out.println("(Using Array) Number of animals in the circus" + animals.length);
+
+        // print elements in the array
+//        for (Animal a : animals){
+//            System.out.println(a);
+//        }
+
+        ArrayList<Animal> animalArrayList = new ArrayList <>(Arrays.asList(animals));
+//        printAllAnimals(animalArrayList);
+
+        System.out.println("(using AL) Number of animals in the circus: " + animalArrayList.size());
+
+
+
+
+        animalArrayList.add(new Elephant("StrongOne"));
+//        System.out.println("Add a new elephant");
+
+
+        Parrot andy = new Parrot("Andy");
+        animalArrayList.add(andy);
+
+
+        System.out.println("\n \n Before sorting:");
+        printAllAnimals(animalArrayList);
+//        System.out.println("(using AL) Number of animals in the circus" + animalArrayList.size());
+//        System.out.println("Position of Andy in AL is:" + animalArrayList.indexOf(andy));
+
+        Animal candidate = findAnimalReference(animalArrayList,"Polly");
+        System.out.println("Position of Candidate in AL is:" + animalArrayList.indexOf(candidate));
+
+
+
+        animalArrayList.sort(Animal.animalNameComparator);
+        System.out.println("\n\n After Sorting: " );
+        printAllAnimals(animalArrayList);
+
+
+
+//        makeAnimalsTalk();
+//        System.out.println("Total value of animals " + calculateAssetValue(animals));
+//        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+    }
+
     /**
      * prints all elements in the array list (of type Animal)
      */
@@ -53,5 +101,14 @@ public class Circus {
             System.out.println(a);
         }
     }
+
+    private static Animal findAnimalReference(ArrayList<Animal> animals, String nameOfAnimal){
+        for(Animal a: animals){
+            if(a.name == nameOfAnimal){
+                return a;
+            }
+
+        }
+        return null;
     }
 }

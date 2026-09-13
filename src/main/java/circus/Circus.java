@@ -1,8 +1,18 @@
 package circus;
-
-import circus.animal.*;
-import circus.equipment.Equipment;
+// remove wildcard import for coding standards
+//<<<<<<< HEAD
+//import circus.animal.*;
+//=======
+import circus.animal.Animal;
+import circus.animal.Elephant;
+import circus.animal.Duck;
+import circus.animal.Parrot;
+import circus.animal.Tiger;
+import circus.equipment.Cage;
 import circus.equipment.Cannon;
+
+import circus.equipment.Equipment;
+
 import circus.equipment.Ladder;
 
 import java.util.ArrayList;
@@ -40,23 +50,16 @@ public class Circus {
         return total;
     }
 
+
+
     public static void main(String[] args) {
+
         System.out.println("Number of animals in the circus: " + animals.length);
 
-        //printAllAnimals();
 
-        // throws error --> need arraylist
-       // animals[3] = new Elephant(name:"StrongOne")
-
-       // System.out.println("(Using Array) Number of animals in the circus" + animals.length);
-
-        // print elements in the array
-//        for (Animal a : animals){
-//            System.out.println(a);
-//        }
 
         ArrayList<Animal> animalArrayList = new ArrayList <>(Arrays.asList(animals));
-//        printAllAnimals(animalArrayList);
+
 
         System.out.println("(using AL) Number of animals in the circus: " + animalArrayList.size());
 
@@ -64,7 +67,7 @@ public class Circus {
 
 
         animalArrayList.add(new Elephant("StrongOne"));
-//        System.out.println("Add a new elephant");
+
 
 
         Parrot andy = new Parrot("Andy");
@@ -73,8 +76,7 @@ public class Circus {
 
         System.out.println("\n \n Before sorting:");
         printAllAnimals(animalArrayList);
-//        System.out.println("(using AL) Number of animals in the circus" + animalArrayList.size());
-//        System.out.println("Position of Andy in AL is:" + animalArrayList.indexOf(andy));
+
 
         Animal candidate = findAnimalReference(animalArrayList,"Polly");
         System.out.println("Position of Candidate in AL is:" + animalArrayList.indexOf(candidate));
@@ -87,9 +89,27 @@ public class Circus {
 
 
 
-//        makeAnimalsTalk();
-//        System.out.println("Total value of animals " + calculateAssetValue(animals));
-//        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+        makeAnimalsTalk();
+        System.out.println("Total value of animals " + calculateAssetValue(animals));
+        System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+
+
+
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("Scrooge");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("Blu");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
+
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for(Cage c: cages) {
+            c.release();
+        }
+
     }
 
     /**

@@ -5,9 +5,9 @@ import circus.Asset;
 import java.util.Comparator;
 
 public abstract class Animal implements Asset {
-
     public String name;
     public abstract String speak();
+
 
     // create comparator to specify how to compare this object
     public static Comparator<Animal> animalNameComparator = new Comparator<Animal>() {
@@ -17,4 +17,7 @@ public abstract class Animal implements Asset {
             return animal1.name.compareToIgnoreCase(animal2.name);
         }
     };
+
+
+
 }
